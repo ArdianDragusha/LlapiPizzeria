@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { openPizzaBuilder } from "./pizza-builder-events";
 
 const languages = [
   { code: "FI", name: "Finnish" },
@@ -21,7 +22,13 @@ export default function SiteNavigation() {
 
         <div className="navigation-links">
           <Link href="/menu">Menu</Link>
-          <Link href="/build-your-pizza">Build your pizza</Link>
+          <button
+            className="navigation-builder-button"
+            type="button"
+            onClick={openPizzaBuilder}
+          >
+            Build your pizza
+          </button>
           <Link href="/kitchen">Kitchen</Link>
         </div>
 

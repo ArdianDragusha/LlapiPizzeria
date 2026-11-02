@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { openPizzaBuilder } from "./pizza-builder-events";
 
 const advertisements = ["AD", "AD", "AD"];
 
@@ -131,6 +132,18 @@ export default function HomeContent() {
           aria-label={activeCategory}
         >
           <h2>{activeCategory}</h2>
+          {activeCategory === "Pizzas" && (
+            <article className="build-pizza-card">
+              <div>
+                <span className="build-pizza-eyebrow">Made your way</span>
+                <h3>Build your own pizza</h3>
+                <p>Choose your size, crust, sauce, and favourite toppings.</p>
+              </div>
+              <button type="button" onClick={openPizzaBuilder}>
+                Start building
+              </button>
+            </article>
+          )}
         </div>
       </section>
     </>
