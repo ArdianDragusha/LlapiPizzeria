@@ -17,6 +17,8 @@ Rakennettiin myös projektinäkymä joka tarvitaan nyt alkuun eli page.tsx (etus
 
 27.10-02.11- Lisäsin pop sivun pizzan rakentamiseen, missä käyttäjä pääsee valitsemaan itselleen maksimissaan 3 täyttettä. Tässä on vielä paljon parannettavaa. Hinnat ja tuotteet eivät ole vielä oikeat, tulossa tapaaminen asiakkaan kanssa tällä viikolla. Täysin uusi asia minulle, meni yllättävän paljon aikaa rakentamiseen. (20h)
 
+03.11 - Lisäsin Footerin, eli sivun loppuun tietoja sijainnista, yhteystiedo jne. Jouduin tekemään sivusta vielä puhelinkäyttäjälle toimivan. Tiedot eivät ole oikein tällä hetkellä, käyn läpi asiakkaan kanssa ja päivitän myöhemmin. (3h)
+
 
 # LOPULLINEN LASKENTA
-2h+1h+3.5h+5h+8h+20h
+2h+1h+3.5h+5h+8h+20h+3h

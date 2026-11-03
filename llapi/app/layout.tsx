@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteNavigation from "./components/site-navigation";
+import SiteFooter from "./components/site-footer";
 import PizzaBuilderModal from "./components/pizza-builder-modal";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <SiteNavigation />
         {children}
+        <SiteFooter />
         <PizzaBuilderModal />
       </body>
     </html>
