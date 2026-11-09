@@ -19,6 +19,9 @@ Rakennettiin myös projektinäkymä joka tarvitaan nyt alkuun eli page.tsx (etus
 
 03.11 - Lisäsin Footerin, eli sivun loppuun tietoja sijainnista, yhteystiedo jne. Jouduin tekemään sivusta vielä puhelinkäyttäjälle toimivan. Tiedot eivät ole oikein tällä hetkellä, käyn läpi asiakkaan kanssa ja päivitän myöhemmin. (3h)
 
+07.11 - Kävin paikan päällä Llapi pizzeriassa ja kävin keskustelua asiakkaan kanssa, että minkälaiset menu kuvakkeet hän haluaa. Sitten kävimme myös läpi minkälainen tilaus sivu on ja minkälaista tietoa asiakkaat laittavat. Kävimme myös muita tilaukseen liittyviä asioita. (3h)![alt text](suunnitelma.jpeg)
+
+08.11 - 09.11 - Lisäsin jokaiseen kategoriaan muutaman menu tuotteen (EI SUORAAN ASIAKKAAN MENUSTA), ja rakensin menu ruudun niin, että käyttäjä pystyy valitsemaan suoraan haluaako perhe vai normaali pizzan. Myös nappi, joka lisää käyttäjän valitseman tuotteen ostoskoriin. Ostoskorin jotkut toiminnot ovat vieläkin kesken, nyt ostoskorissa näkyy vain Yhteishinta ja tuotteet. (11h)
 
 # LOPULLINEN LASKENTA
-2h+1h+3.5h+5h+8h+20h+3h
+2h+1h+3.5h+5h+8h+20h+3h+3h+11h

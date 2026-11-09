@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PIZZA_BUILDER_EVENT } from "./pizza-builder-events";
+import { addCartItem } from "./cart-storage";
 
 type PricedOption = {
   id: string;
@@ -14,16 +15,6 @@ type ToppingGroup = {
   toppings: PricedOption[];
 };
 
-type PizzaOrder = {
-  name: string;
-  size: string;
-  crust: string;
-  sauce: string;
-  toppings: string[];
-  total: number;
-};
-
-const CART_STORAGE_KEY = "llapi-cart";
 const MAX_TOPPINGS = 3;
 
 // Edit these options and prices (in cents) to change the available pizza sizes.
@@ -151,22 +142,22 @@ export default function PizzaBuilderModal() {
   }
 
   function addToCart() {
-    const order: PizzaOrder = {
-      name: "Build your own pizza",
-      size: size.name,
-      crust: crust.name,
-      sauce: sauce.name,
-      toppings: selectedToppings.map(
-        (id) => toppingOptions.find((topping) => topping.id === id)?.name ?? id,
-      ),
-      total,
-    };
+    const toppings = selectedToppings.map(
+      (id) => toppingOptions.find((topping) => topping.id === id)?.name ?? id,
+    );
 
     try {
-      const savedCart = localStorage.getItem(CART_STORAGE_KEY);
-      const parsedCart: unknown = savedCart ? JSON.parse(savedCart) : [];
-      const cartItems = Array.isArray(parsedCart) ? parsedCart : [];
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify([...cartItems, order]));
+      addCartItem({
+        name: "Build your own pizza",
+        category: "Pizzas",
+        variant: size.name,
+        details: [
+          `Crust: ${crust.name}`,
+          `Sauce: ${sauce.name}`,
+          `Toppings: ${toppings.join(", ") || "None"}`,
+        ],
+        unitPriceCents: total,
+      });
       setFeedback("Pizza added to your cart.");
     } catch (error) {
       console.error("Could not save the pizza to the cart.", error);
