@@ -168,3 +168,15 @@ export function removeCartItem(itemId: string): CartItem[] {
   saveCartItems(items);
   return items;
 }
+
+export function updateCartItemQuantity(itemId: string, quantity: number) {
+  if (!Number.isInteger(quantity) || quantity < 1) {
+    throw new Error("Cart item quantity must be a positive integer.");
+  }
+
+  const items = getCartItems().map((item) =>
+    item.id === itemId ? { ...item, quantity } : item,
+  );
+  saveCartItems(items);
+  return items;
+}

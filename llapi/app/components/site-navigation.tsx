@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+import {
+  getCartSnapshot,
+  getServerCartSnapshot,
+  subscribeToCart,
+} from "./cart-storage";
+import { openCartDrawer } from "./cart-drawer-events";
 import { openPizzaBuilder } from "./pizza-builder-events";
 
 const languages = [
@@ -12,6 +18,12 @@ const languages = [
 
 export default function SiteNavigation() {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const cart = useSyncExternalStore(
+    subscribeToCart,
+    getCartSnapshot,
+    getServerCartSnapshot,
+  );
+  const itemCount = cart.items.reduce((count, item) => count + item.quantity, 0);
 
   return (
     <header className="site-header">
@@ -65,7 +77,12 @@ export default function SiteNavigation() {
             </svg>
           </label>
 
-          <Link className="cart-link" href="/cart">
+          <button
+            aria-label={`Cart${itemCount > 0 ? `, ${itemCount} ${itemCount === 1 ? "item" : "items"}` : ""}`}
+            className="cart-link"
+            onClick={openCartDrawer}
+            type="button"
+          >
             <svg
               aria-hidden="true"
               className="cart-icon"
@@ -76,7 +93,12 @@ export default function SiteNavigation() {
               <path d="M9 8V6a3 3 0 0 1 6 0v2M9 12h6" />
             </svg>
             <span>Cart</span>
-          </Link>
+            {itemCount > 0 && (
+              <span aria-hidden="true" className="cart-item-count">
+                {itemCount > 99 ? "99+" : itemCount}
+              </span>
+            )}
+          </button>
         </div>
       </nav>
     </header>

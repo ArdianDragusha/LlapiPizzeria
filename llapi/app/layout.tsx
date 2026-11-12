@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteNavigation from "./components/site-navigation";
 import SiteFooter from "./components/site-footer";
 import PizzaBuilderModal from "./components/pizza-builder-modal";
+import CartDrawer from "./components/cart-drawer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,7 +22,13 @@ export const metadata: Metadata = {
   description: "Fresh pizza, made your way.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  modal: ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -30,6 +38,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteNavigation />
         {children}
         <SiteFooter />
+        {modal}
+        <CartDrawer />
         <PizzaBuilderModal />
       </body>
     </html>
